@@ -2,7 +2,7 @@
 
 ## アプリファイルのダウンロード
 
-[こちら](https://github.com/RyBB/liff-kintone-questionary/releases/tag/1.0.0)より **kintoneApp.zip** というZipファイルをダウンロードしてください。
+[こちら](https://github.com/RyBB/line-kintone-azure-takeout/releases/)より **kintoneApp.zip** というZipファイルをダウンロードしてください。
 
 ## アプリの展開
 
