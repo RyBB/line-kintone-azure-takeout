@@ -1,0 +1,26 @@
+{
+    "app": "35",
+    "scope": "ALL",
+    "desktop": {
+        "js": [
+            "https://js.cybozu.com/sweetalert/v2.1.2/sweetalert.min.js",
+            "https://js.cybozu.com/momentjs/2.26.0/moment.min.js",
+            "src/js/script.js"
+        ],
+        "css": [
+            "src/css/51-modern-default.css",
+            "src/css/style.css"
+        ]
+    },
+    "mobile": {
+        "js": [
+            "https://js.cybozu.com/sweetalert/v2.1.2/sweetalert.min.js",
+            "https://js.cybozu.com/momentjs/2.26.0/moment.min.js",
+            "src/js/script.js"
+        ],
+        "css": [
+            "src/css/51-modern-default.css",
+            "src/css/style.css"
+        ]
+    }
+}

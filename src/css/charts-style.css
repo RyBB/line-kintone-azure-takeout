@@ -1,0 +1,15 @@
+.canvas-box1,
+.canvas-box2,
+.canvas-box3,
+.canvas-box4 {
+  float: left;
+  width: 50%;
+}
+.canvas-box {
+  border: none;
+}
+.canvas-box::after {
+  content: "";
+  display: block;
+  clear: both;
+}
