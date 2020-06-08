@@ -1,0 +1,24 @@
+{
+    "app": "33",
+    "scope": "ALL",
+    "desktop": {
+        "js": [
+            "https://js.cybozu.com/chartjs/v2.7.3/Chart.min.js",
+            "src/js/chartjs-plugin-colorschemes.min.js",
+            "src/js/charts-script.js"
+        ],
+        "css": [
+            "src/css/charts-style.css"
+        ]
+    },
+    "mobile": {
+        "js": [
+            "https://js.cybozu.com/chartjs/v2.7.3/Chart.min.js",
+            "src/js/chartjs-plugin-colorschemes.min.js",
+            "src/js/charts-script.js"
+        ],
+        "css": [
+            "src/css/charts-style.css"
+        ]
+    }
+}
