@@ -1,7 +1,7 @@
-# LINE側の設定
+# サーバーの設定
 
-次はLINE側の設定に入ります。<br/>
-kintone側は一旦終了のため、以下の手順ドキュメントよりLINE側の設定を行ってください。
+次はサーバー側（heroku）の設定に入ります。<br/>
+kintone側は一旦終了のため、以下の手順ドキュメントよりheroku側の設定を行ってください。
 
 前ステップで用意した、
 
@@ -11,5 +11,5 @@ kintone側は一旦終了のため、以下の手順ドキュメントよりLINE
 
 はここで使うので、メモがまだの方はメモしておいてください！
 
-▼ LIFF x Kintone Questionary app Course
-<https://www.katacoda.com/sumihiro3/courses/liffkintonequestionarycourse>
+▼ LINE x Kintone x Azure Takeout Course
+<https://www.katacoda.com/sumihiro3/courses/linekintoneazuretakeoutcourse/>
