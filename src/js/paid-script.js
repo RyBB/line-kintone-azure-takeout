@@ -31,6 +31,21 @@
     return kintone.api(kintone.api.url('/k/v1/record'), 'PUT', {app, id, record});
   };
 
+  const STATUS = {
+    'PREPARING': {
+      CLASS: 'kintoneplugin-button-normal',
+      MSG: '準備',
+      TEXT: '商品の準備完了',
+      NEXT: 'READY'
+    },
+    'READY': {
+      CLASS: 'kintoneplugin-button-dialog-ok',
+      MSG: '受取',
+      TEXT: '商品の受取完了',
+      NEXT: 'DELIVERED'
+    },
+  };
+
   // 詳細画面でメッセージを1件送信する処理
   kintone.events.on([
     'app.record.detail.show',
@@ -40,23 +55,16 @@
     const headerSpace = isMobile ? kintone.mobile.app.getHeaderSpaceElement() : document.getElementsByClassName('gaia-argoui-app-toolbar-statusmenu')[0];
 
     if (event.record['delivery_state'].value === 'DELIVERED') return;
+    if (event.record['pay_state'].value !== 'PAID') return;
 
     const status = event.record['delivery_state'].value;
-    const nextStatus = status === 'PREPARING' ? 'READY' : 'DELIVERED';
-    const btnClass = status === 'PREPARING' ? 'kintoneplugin-button-normal' : 'kintoneplugin-button-dialog-ok';
 
     const exitBtn = document.getElementById('kintone-send-status-button');
-    if (exitBtn) {
-      exitBtn.classList.remove('kintoneplugin-button-normal');
-      exitBtn.classList.remove('kintoneplugin-button-dialog-ok');
-      exitBtn.classList.add(btnClass);
-      exitBtn.textContent = status === 'PREPARING' ? '商品の準備完了' : '商品の受取完了';
-      return;
-    }
+    if (exitBtn) document.parentNode.removeChild(exitBtn);
     const btn = document.createElement('button');
     btn.id = 'kintone-send-status-button';
-    btn.classList.add(btnClass);
-    btn.textContent = status === 'PREPARING' ? '商品の準備完了' : '商品の受取完了';
+    btn.classList.add(STATUS[status].CLASS);
+    btn.textContent = STATUS[status].TEXT;
     headerSpace.appendChild(btn);
 
     btn.onclick = () => {
@@ -64,15 +72,15 @@
       const orderID = event.record['order_id'].value;
       swal({
         title: '確認',
-        text: `商品の【${(nextStatus === 'READY' ? '準備' : '受取')}】完了メッセージを送信しますか？`,
+        text: `商品の【${(STATUS[status].MSG)}】完了メッセージを送信しますか？`,
         icon: 'info',
         buttons: true,
       }).then(isSend => {
         if (!isSend) throw new Error('キャンセル');
-        return postOrderStatus(herokuURL, orderID, nextStatus);
+        return postOrderStatus(herokuURL, orderID, STATUS[status].NEXT);
       }).then(resp => {
         console.log(resp);
-        if (resp[1] === 200) return putKintoneRecord(nextStatus);
+        if (resp[1] === 200) return putKintoneRecord(STATUS[status].NEXT);
         throw new Error('送信失敗');
       }).then(() => {
         return swal('送信成功！');
