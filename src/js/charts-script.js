@@ -1,6 +1,5 @@
 (() => {
   'use strict';
-  const VIEWID = 5118422;
   const ramdomNum = (MAX, MIN) => 10 + (Math.floor(Math.random() * MAX) + MIN);
 
   // サンプルデータ
@@ -122,7 +121,7 @@
 
   // イベント発火
   kintone.events.on(['app.record.index.show', 'mobile.app.record.index.show'], async event => {
-    if (event.viewId !== VIEWID) return;
+    if (event.viewId === 5118379 || event.viewId === 20) return;
 
     const recordsData = await getRecords();
     const dataArray = [];
