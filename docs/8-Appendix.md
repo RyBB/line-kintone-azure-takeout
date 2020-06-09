@@ -33,7 +33,7 @@ kintoneにはAPIなどの拡張機能があり、ご自身のやりたいこと�
 ・Webhookによるイベント発火
 <img src="https://docs.google.com/drawings/d/e/2PACX-1vSugyFnlDGMm1ioXJmSzK7nxNxrx8JzkQaSeqbR3UAKtmSpWXTu52DhRiMSYLIyLdk9hpyvT0avCPod/pub?w=928&amp;h=489">
 
-## 今回のkintoneカスタマイズのコード解説
+## 今回のkintoneカスタマイズのコード
 
 今回は3つのアプリに対してそれぞれカスタマイズを実装しています。
 
