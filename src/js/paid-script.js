@@ -53,14 +53,14 @@
   ], event => {
     const isMobile = event.type.split('.')[0] === 'mobile';
     const headerSpace = isMobile ? kintone.mobile.app.getHeaderSpaceElement() : document.getElementsByClassName('gaia-argoui-app-toolbar-statusmenu')[0];
+    const exitBtn = document.getElementById('kintone-send-status-button');
+    if (exitBtn) exitBtn.parentNode.removeChild(exitBtn);
 
     if (event.record['delivery_state'].value === 'DELIVERED') return;
     if (event.record['pay_state'].value !== 'PAID') return;
 
     const status = event.record['delivery_state'].value;
 
-    const exitBtn = document.getElementById('kintone-send-status-button');
-    if (exitBtn) document.parentNode.removeChild(exitBtn);
     const btn = document.createElement('button');
     btn.id = 'kintone-send-status-button';
     btn.classList.add(STATUS[status].CLASS);
