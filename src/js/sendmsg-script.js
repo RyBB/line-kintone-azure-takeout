@@ -1,7 +1,7 @@
 (() => {
   'use strict';
 
-  // LINEへメッセージを送信する関数
+  // herokuへメッセージテキストを送信する関数 (→LINEへメッセージが送信される)
   const postLINEMessage = (herokuURL, userIds, content) => {
     const HEROKU_URL = `${herokuURL}/api/sendMulticastMessage`;
     const AUTH = 'API_KEY_000000000';
@@ -10,7 +10,7 @@
       'Content-Type': 'application/json'
     };
     const body = {
-      userIds: userIds,
+      userIds,
       message: {
         title: 'kintoneからメッセージです',
         body: content || '本文なし'
@@ -31,7 +31,7 @@
     return kintone.api(kintone.api.url('/k/v1/record'), 'PUT', {app, id, record});
   };
 
-  // 詳細画面でメッセージを1件送信する処理
+  // 詳細画面でメッセージを送信する処理
   kintone.events.on([
     'app.record.detail.show',
     'mobile.app.record.detail.show'
@@ -71,7 +71,6 @@
         if (resp[1] === 200) return resp;
         return postLINEMessage(herokuURL, [userId], content);
       }).then(res => {
-        console.log(res);
         if (res[1] === 200) return putKintoneRecord();
         throw new Error('キャンセル');
       }).then(() => {

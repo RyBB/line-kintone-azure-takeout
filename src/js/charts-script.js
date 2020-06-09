@@ -2,6 +2,8 @@
   'use strict';
   const VIEWID = 5118422;
   const ramdomNum = (MAX, MIN) => 10 + (Math.floor(Math.random() * MAX) + MIN);
+
+  // サンプルデータ
   const SAMPLE = {
     label: ['2020/1', '2020/2', '2020/3', '2020/4', '2020/5', '2020/6'],
     data: [{
@@ -14,11 +16,14 @@
     }],
   };
 
+  // kintoneのレコードデータを取得する関数。最大500レコード。
   const getRecords = () => {
     const app = kintone.app.getId();
     const query = 'order by ordered_at asc limit 500';
     return kintone.api(kintone.api.url('/k/v1/records'), 'GET', {app, query});
   };
+
+  // 折れ線グラフ①
   const createLineChart = DOMID => {
     const ctx = document.getElementById(DOMID).getContext('2d');
     const cheeseProfit = SAMPLE.data[0].amount.map(val => val * 500);
@@ -34,6 +39,7 @@
       },
     });
   };
+  // 折れ線グラフ②
   const createLineChart2 = DOMID => {
     const ctx = document.getElementById(DOMID).getContext('2d');
     const cheeseProfit = SAMPLE.data[0].amount.map(val => val * 500);
@@ -61,6 +67,7 @@
       }
     });
   };
+  // 棒グラフ
   const createBarChart = DOMID => {
     const ctx = document.getElementById(DOMID).getContext('2d');
     new Chart(ctx, {
@@ -89,6 +96,7 @@
       }
     });
   };
+  // ドーナツグラフ
   const createDoughnutChart = DOMID => {
     const ctx = document.getElementById(DOMID).getContext('2d');
     new Chart(ctx, {
@@ -112,6 +120,7 @@
     });
   };
 
+  // イベント発火
   kintone.events.on(['app.record.index.show', 'mobile.app.record.index.show'], async event => {
     if (event.viewId !== VIEWID) return;
 
@@ -124,11 +133,17 @@
         dataArray[i] = val['item_name'].value === v.name ? (Number(dataArray[i]) || 0) + Number(val['quantity'].value) : (Number(dataArray[i]) || 0) + 0;
       });
     });
+
+    // サンプルデータの6月分だけkintoneのデータを反映させる
     SAMPLE.data[0].amount[5] += dataArray[0];
     SAMPLE.data[1].amount[5] += dataArray[1];
+
+    // グラフ描写
     createLineChart('myChart1');
     createLineChart2('myChart2');
     createBarChart('myChart3');
     createDoughnutChart('myChart4');
+
+    return event;
   });
 })();

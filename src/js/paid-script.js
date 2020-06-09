@@ -1,19 +1,15 @@
 (() => {
   'use strict';
 
-  // LINEへ注文ステータスを送信する関数
-  const postOrderStatus = (herokuURL, orderId, status) => {
+  // herokuへ注文ステータスを送信する関数 (→LINEへメッセージが送信される)
+  const postOrderStatus = (herokuURL, orderId, deliveryState) => {
     const HEROKU_URL = `${herokuURL}/api/notifyOrderDeliveryState`;
     const AUTH = 'API_KEY_000000000';
     const header = {
       'Authorization': AUTH,
       'Content-Type': 'application/json'
     };
-    const body = {
-      orderId,
-      deliveryState: status
-    };
-    return kintone.proxy(HEROKU_URL, 'POST', header, body);
+    return kintone.proxy(HEROKU_URL, 'POST', header, {orderId, deliveryState});
   };
 
   // kintoneのステータスを更新する関数
@@ -31,6 +27,7 @@
     return kintone.api(kintone.api.url('/k/v1/record'), 'PUT', {app, id, record});
   };
 
+  // ステータスごとのパラメータ
   const STATUS = {
     'PREPARING': {
       CLASS: 'kintoneplugin-button-normal',
@@ -46,13 +43,14 @@
     },
   };
 
-  // 詳細画面でメッセージを1件送信する処理
+  // 詳細画面でメッセージを送信する処理
   kintone.events.on([
     'app.record.detail.show',
     'mobile.app.record.detail.show'
   ], event => {
     const isMobile = event.type.split('.')[0] === 'mobile';
     const headerSpace = isMobile ? kintone.mobile.app.getHeaderSpaceElement() : document.getElementsByClassName('gaia-argoui-app-toolbar-statusmenu')[0];
+
     const exitBtn = document.getElementById('kintone-send-status-button');
     if (exitBtn) exitBtn.parentNode.removeChild(exitBtn);
 
@@ -61,6 +59,7 @@
 
     const status = event.record['delivery_state'].value;
 
+    // ボタン作成
     const btn = document.createElement('button');
     btn.id = 'kintone-send-status-button';
     btn.classList.add(STATUS[status].CLASS);
@@ -79,7 +78,6 @@
         if (!isSend) throw new Error('キャンセル');
         return postOrderStatus(herokuURL, orderID, STATUS[status].NEXT);
       }).then(resp => {
-        console.log(resp);
         if (resp[1] === 200) return putKintoneRecord(STATUS[status].NEXT);
         throw new Error('送信失敗');
       }).then(() => {
@@ -90,5 +88,7 @@
         console.log(err);
       });
     };
+
+    return event;
   });
 })();
