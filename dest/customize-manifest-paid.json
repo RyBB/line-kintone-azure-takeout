@@ -5,30 +5,22 @@
         "js": [
             "https://js.cybozu.com/sweetalert/v2.1.2/sweetalert.min.js",
             "https://js.cybozu.com/momentjs/2.26.0/moment.min.js",
-            "https://js.cybozu.com/chartjs/v2.7.3/Chart.min.js",
-            "src/js/chartjs-plugin-colorschemes.min.js",
-            "src/js/paid-script.js",
-            "src/js/charts-script.js"
+            "src/js/paid-script.js"
         ],
         "css": [
             "src/css/51-modern-default.css",
-            "src/css/style.css",
-            "src/css/charts-style.css"
+            "src/css/style.css"
         ]
     },
     "mobile": {
         "js": [
             "https://js.cybozu.com/sweetalert/v2.1.2/sweetalert.min.js",
             "https://js.cybozu.com/momentjs/2.26.0/moment.min.js",
-            "https://js.cybozu.com/chartjs/v2.7.3/Chart.min.js",
-            "src/js/chartjs-plugin-colorschemes.min.js",
-            "src/js/paid-script.js",
-            "src/js/charts-script.js"
+            "src/js/paid-script.js"
         ],
         "css": [
             "src/css/51-modern-default.css",
-            "src/css/style.css",
-            "src/css/charts-style.css"
+            "src/css/style.css"
         ]
     }
 }

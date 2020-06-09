@@ -7,9 +7,10 @@ module.exports = {
       '2-CreateKintoneApp.md',
       '3-CreateKintoneToken.md',
       '4-SettingServer.md',
-      '5-Validation.md',
-      '6-Validation2.md',
-      '7-Appendix.md',
+      '5-Check1.md',
+      '6-Check2.md',
+      '7-Check3.md',
+      '8-Appendix.md'
     ],
   },
 };
