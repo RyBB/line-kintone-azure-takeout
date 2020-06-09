@@ -33,6 +33,13 @@ kintoneにはAPIなどの拡張機能があり、ご自身のやりたいこと�
 ・Webhookによるイベント発火
 <img src="https://docs.google.com/drawings/d/e/2PACX-1vSugyFnlDGMm1ioXJmSzK7nxNxrx8JzkQaSeqbR3UAKtmSpWXTu52DhRiMSYLIyLdk9hpyvT0avCPod/pub?w=928&amp;h=489">
 
+## cybozu developer network
+
+> https://developer.cybozu.io/hc/ja
+
+APIドキュメントなどkintoneのカスタマイズ情報はこのサイトに全て載っています！
+<img src="https://docs.google.com/drawings/d/e/2PACX-1vSArl6xI3C3X4h7U5a8hFxDjQA6atF6IB7GtwqTEVUokSetls9cO6QErnzQ_U-BPEm-jBAVvPRfwE9f/pub?w=1391&amp;h=726">
+
 ## 今回のkintoneカスタマイズのコード
 
 今回は3つのアプリに対してそれぞれカスタマイズを実装しています。
