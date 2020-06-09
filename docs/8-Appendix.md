@@ -43,11 +43,24 @@ kintoneにはAPIなどの拡張機能があり、ご自身のやりたいこと�
 
 それぞれGitHubにあげているので気になった方はぜひぜひ！
 
-### グラフの自作
+### 自作グラフの一覧 （カスタマイズビュー）
 
-kintone上には以下のHTMLを埋め込んでいます。<br/>
+カスタマイズビューという機能を使ってHTMLをkintone内に記述しています。<br/>
 
 > ※ 参考）https://developer.cybozu.io/hc/ja/articles/202905604
+
+・設定方法<br/>
+**【テイクアウト】注文管理** アプリの一覧画面の歯車よりアプリの設定画面を開いてください。
+<img src="https://docs.google.com/drawings/d/e/2PACX-1vRvfYh9jABgjFdPoKQBotN3WW4Agnlsov_QlHNqKGlCoufPW1XvcRPhj_v4cQBkeST8KRSCh0wKPFie/pub?w=1393&amp;h=728">
+この設定画面でアプリのフォームの構成やアクセス権などが設定できます！
+
+一覧タブを選んで、右側の「+ボタン」を選択して一覧を作成します。
+<img src="https://docs.google.com/drawings/d/e/2PACX-1vRvtqPpkR-Z6xpnFjNnRXoHhTGxgUsgUr_lVAZRcCivFCplueQnCfUJcUcIdOFrRPJIGXgj91m2Ww_i/pub?w=1390&amp;h=736">
+
+一覧名を適当につけて、表示形式を **カスタマイズ** に変更します。
+<img src="https://docs.google.com/drawings/d/e/2PACX-1vRXd9Eke608tNJy1k97GlnyEuK6L3cQvdxMq30oh2jwhN6QeFans7hB14M2yCSQTfBReJVEXFo1KteE/pub?w=1393&amp;h=726">
+
+下の方にHTMLを記入できる場所があるので、そこに下記のHTMLをコピペで記入してください。
 
 ```html
 <div class="canvas-box">
@@ -60,4 +73,7 @@ kintone上には以下のHTMLを埋め込んでいます。<br/>
 </div>
 ```
 
-今回はサンプルということでグラフの軸などは固定にしていますが、本当は可変できたほうがいいですね。
+<img src="https://docs.google.com/drawings/d/e/2PACX-1vSFQoBfVZWXXJE8D99c1AVIZR9rNL4F8Ain0zoHGeGDz-zqEu5joJ0WUC-XUmmMJAtYpFTXUOPHrDIX/pub?w=1394&amp;h=723">
+
+一覧の保存後、「アプリを更新」でアプリに反映させます。<font color="red">必ずアプリを更新をしてください！よく忘れます！！</font>
+<img src="https://docs.google.com/drawings/d/e/2PACX-1vSF88WspbfmfpODDqdmbh0XIpx8a-REc-94kZdJJjx0yu3Z8Ckuazohe-Yx-4rKvEsdhqg2czjoEc3X/pub?w=1390&amp;h=746">

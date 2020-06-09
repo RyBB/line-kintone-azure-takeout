@@ -23,8 +23,9 @@ kintoneには標準でグラフを作成する機能があります。今回は 
 標準の機能によるグラフ作成以外にも **JavaScript/CSSを駆使してグラフを自作** することもできます！これが結構すごい！<br/>
 kintone上にHTMLが書ける「カスタマイズビュー」という機能があり、それとJavaScript/CSSを使えば自由にWeb画面を作ることができます。<br/>
 
-実はみなさんに配布しているアプリテンプレートにはすでにJavaScript/CSSカスタマイズが仕込まれていて、<br/>
-一覧を **カスタマイズグラフ** に変更すると・・・
+実はみなさんに配布しているアプリテンプレートにはすでにJavaScript/CSSカスタマイズが仕込まれていて、カスタマイズ用の一覧を選べばグラフが描写されます。<br/>
+
+一覧を **ダッシュボード** に変更すると・・・
 <img src="https://docs.google.com/drawings/d/e/2PACX-1vT70yfwj1JnGgF_lfHTF-7jQXEPVWKzzXeJ2peKWEhZj7LrCJB81wd44twRHstRmTs00ImmIzXCQCNn/pub?w=927&amp;h=489">
 <img src="https://docs.google.com/drawings/d/e/2PACX-1vQjMDAuEoKxxlRZop_YmrOHz44mAxOPQG3M-ezDEewuL1FyDnTnITEfR2Scfx9-8mYgKfONHVPFIU5Q/pub?w=794&amp;h=662">
 こんな画面を自由につくることができます！<br/>
